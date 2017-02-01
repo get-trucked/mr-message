@@ -17,6 +17,7 @@
     "files": [
         "src/api.ts",
         "src/config.ts",
+        "src/logger.ts",
         "src/main.ts",
         "src/routes/api-v1.ts",
         "src/Server.ts"

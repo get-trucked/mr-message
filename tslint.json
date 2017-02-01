@@ -5,7 +5,7 @@
             "check-space"
         ],
         "indent": [true,
-            "spaces",
+            "spaces"
         ],
         "linebreak-style": [true, "LF"],
         "one-line": [true,

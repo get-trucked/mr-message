@@ -8,7 +8,7 @@ class Server {
         this.port = port;
         this.app = express();
     }
-    addRouters(routers) {
+    addRoutes(routers) {
         _.forEach(routers, (router) => {
             this.app.use(router.route, router.router);
         });

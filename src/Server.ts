@@ -12,7 +12,7 @@ export class Server {
         this.app = express();
     }
 
-    public addRouters(routers: { route: string, router: express.Router }[]): void {
+    public addRoutes(routers: { route: string, router: express.Router }[]): void {
         _.forEach(routers, (router) => {
             this.app.use(router.route, router.router);
         });
