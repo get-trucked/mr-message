@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "noLib": false,
+        "noUnusedLocals": true,
+        "outDir": "dist/"
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "!node_modules/**"
+    ],
+    "files": [
+        "src/api.ts",
+        "src/config.ts",
+        "src/main.ts",
+        "src/routes/api-v1.ts",
+        "src/Server.ts"
+    ],
+    "exclude": [
+        "dist/**"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
+}
