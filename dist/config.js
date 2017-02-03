@@ -15,11 +15,23 @@ let conf = convict({
         env: 'PORT'
     },
     logLevel: {
-        doc: 'The port to bind.',
+        doc: 'Logging level.',
         format: String,
         default: 'info',
         env: 'LOG_LEVEL'
     },
+    firebaseSenderID: {
+        doc: 'Firebase sender ID.',
+        format: String,
+        default: 'info',
+        env: 'FIREBASE_ID'
+    },
+    firebaseServerKey: {
+        doc: 'Firebase server key.',
+        format: String,
+        default: 'info',
+        env: 'FIREBASE_KEY'
+    }
 });
 // Load environment dependent configuration
 let env = conf.get('env');
@@ -32,7 +44,11 @@ conf.validate({
 const config = {
     env: conf.get('env'),
     logLevel: conf.get('logLevel'),
-    port: conf.get('port')
+    port: conf.get('port'),
+    firebase: {
+        senderID: conf.get('firebaseSenderID'),
+        serverKey: conf.get('firebaseServerKey'),
+    }
 };
 exports.config = config;
 //# sourceMappingURL=config.js.map

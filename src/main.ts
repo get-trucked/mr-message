@@ -1,13 +1,19 @@
 import { Server } from './Server';
+import { MessageSender } from './MessageSender';
 import { config } from './config';
-import { logger } from './logger';
+import { logger as log } from './logger';
 import * as api from './api';
 
 function main() {
-    let server = new Server(logger, config.port);
+    log.notice('starting with config: ', config);
+
+    let messageSender = new MessageSender(log, config.firebase.senderID, config.firebase.serverKey);
+
+    let server = new Server(log, config.port);
     server.addRoutes([{route: '/api/v1', router: api.v1}]);
 
-    return server.start();
+    return server.start()
+    .then(() => messageSender.connect());
 }
 
 main();

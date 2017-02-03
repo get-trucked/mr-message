@@ -9,5 +9,4 @@ let logger = new (winston.Logger)({
 exports.logger = logger;
 logger.setLevels(winston.config.syslog.levels);
 logger.level = config_1.config.logLevel;
-logger.notice('starting with config: ', config_1.config);
 //# sourceMappingURL=logger.js.map

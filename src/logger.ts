@@ -9,6 +9,5 @@ let logger = new (winston.Logger)({
 });
 logger.setLevels(winston.config.syslog.levels);
 logger.level = config.logLevel;
-logger.notice('starting with config: ', config);
 
 export { logger };
