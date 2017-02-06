@@ -13,7 +13,8 @@ function main() {
     server.addRoutes([{route: '/api/v1', router: api.v1}]);
 
     return server.start()
-    .then(() => messageSender.connect());
+    .then(() => messageSender.connect()
+    .then(() => log.debug('server ready')));
 }
 
 main();

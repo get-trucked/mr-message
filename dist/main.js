@@ -10,7 +10,8 @@ function main() {
     let server = new Server_1.Server(logger_1.logger, config_1.config.port);
     server.addRoutes([{ route: '/api/v1', router: api.v1 }]);
     return server.start()
-        .then(() => messageSender.connect());
+        .then(() => messageSender.connect()
+        .then(() => logger_1.logger.debug('server ready')));
 }
 main();
 //# sourceMappingURL=main.js.map
