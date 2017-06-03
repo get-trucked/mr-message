@@ -8,7 +8,7 @@
         "sourceMap": true,
         "noLib": false,
         "noUnusedLocals": true,
-        "outDir": "dist/"
+        "outDir": "dist"
     },
     "filesGlob": [
         "**/*.ts",
@@ -20,13 +20,10 @@
         "src/logger.ts",
         "src/main.ts",
         "src/MessageSender.ts",
-        "src/routes/api-v1.ts",
-        "src/Server.ts"
+        "src/Server.ts",
+        "src/test/test.ts"
     ],
     "exclude": [
         "dist/**"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+    ]
 }

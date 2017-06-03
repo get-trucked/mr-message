@@ -33,16 +33,32 @@ export class MessageSender {
                 resolve(true);
             });
 
+            this.client.on('online', () => {
+                this.log.debug(`${this.constructor.name}: firebase is online`);
+            });
+
             this.client.on('error', (err: string) => {
-                this.log.debug(`${this.constructor.name}: firebase error`, err);
+                this.log.error(`${this.constructor.name}: firebase error`, err);
                 reject(new Error(err));
             });
+
+            this.client.on('message', (messageId: string, from: string,  data: any, category: string) => {
+                // TODO add message handlers to get what is revieved here
+                this.log.debug(messageId, from,  data, category);
+            });
+            this.client.on('receipt', (messageId: string, from: string,  data: any, category: string) => {
+                this.log.debug(messageId, from,  data, category);
+            });
+
+            this.client.on('disconnected', console.log);
+            this.client.on('error', console.log);
+            this.client.on('message-error', console.log);
         });
     }
 
-    send(data: Message): when.Promise<any> {
-        let message = this.buildMessage(data, this.buildNotification());
-        return this.sendMessage(message, data.to);
+    send(message: Message): when.Promise<any> {
+        let firebaseMag = this.buildMessage(message, this.buildNotification());
+        return this.sendMessage(firebaseMag, message.to);
     }
 
     private buildNotification() {
@@ -53,10 +69,9 @@ export class MessageSender {
     }
 
     private buildMessage(data: Message, notification: any) {
-        let message =  new Message('messageId_1046')
+        let message =  new Message(data.id)
             .notification(notification)
             .priority(data.priority)
-            .notification(notification)
             .deliveryReceiptRequested(data.deliveryReceiptRequested);
 
         _.forEach(data.data, (data, key) => {
@@ -69,6 +84,8 @@ export class MessageSender {
 
     private sendMessage(message: any, to: string) {
         return when.promise((resolve, reject) => {
+            // TODO look into why the client does this. calling a method to check for an error is strange
+            // not a normal nodejs callback pattern
             this.client.sendNoRetry(message, to, (result: any) => {
                 if (result.getError()) {
                     this.log.debug(`${this.constructor.name}: send error`, {

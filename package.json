@@ -5,8 +5,8 @@
   "main": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/tslint/bin/tslint --project ./tsconfig.json && npm run tscompile",
-    "tscompile": "node_modules/typescript/bin/tsc",
+    "build": "tslint --project ./tsconfig.json && npm run tsc",
+    "tsc": "tsc",
     "start": "cd dist && node main"
   },
   "repository": {
@@ -21,19 +21,23 @@
   "homepage": "https://github.com/get-trucked/mr-message#readme",
   "dependencies": {
     "convict": "^2.0.0",
-    "express": "^4.14.1",
+    "express": "^4.15.2",
+    "express-winston": "^2.4.0",
     "lodash": "^4.17.4",
     "node-xcs": "^0.1.6",
-    "when": "^3.7.7",
+    "request": "^2.81.0",
+    "when": "^3.7.8",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "@types/convict": "^0.6.33",
     "@types/express": "^4.0.35",
-    "@types/lodash": "^4.14.51",
+    "@types/lodash": "^4.14.63",
+    "@types/pg": "^6.1.39",
+    "@types/request": "0.0.42",
     "@types/when": "^2.4.28",
-    "@types/winston": "^2.2.0",
-    "tslint": "^4.4.2",
-    "typescript": "^2.1.5"
+    "@types/winston": "^2.3.1",
+    "tslint": "^5.1.0",
+    "typescript": "^2.3.2"
   }
 }

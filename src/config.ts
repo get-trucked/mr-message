@@ -16,20 +16,20 @@ let conf = convict({
     },
     logLevel: {
         doc: 'Logging level.',
-        format: String,
+        format: [ 'emerg', 'alert', 'crit', 'error', 'warning', 'notice', 'info', 'debug'],
         default: 'info',
         env: 'LOG_LEVEL'
     },
     firebaseSenderID: {
         doc: 'Firebase sender ID.',
         format: String,
-        default: 'info',
+        default: '',
         env: 'FIREBASE_ID'
     },
     firebaseServerKey: {
         doc: 'Firebase server key.',
         format: String,
-        default: 'info',
+        default: '',
         env: 'FIREBASE_KEY'
     }
 });
